@@ -1,0 +1,20 @@
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848 #nacos服务器地址
+      config:
+        #关闭spring.config.import: nacos: XXXX.yml
+        import-check:
+          enabled: false
+#提供者服务器名:
+#  ribbon:
+#    NFLoadBalancerRuleClassName: com.alibaba.cloud.nacos.ribbon.NacosRule
+
+#消费者配置
+#spring:
+#  cloud:
+#    nacos:
+#      discovery:
+#        #命名空间id
+#        namespace: 8aa39e26-f01c-487f-b0ea-0ffd8a3757ab

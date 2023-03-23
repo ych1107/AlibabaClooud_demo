@@ -1,0 +1,4 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.dftdlaSecurityJwt.filter.JwtAuthenticationTokenFilter,com.dftdlaSecurityJwt.util.impl.AccessDeniedHandlerImpl,com.dftdlaSecurityJwt.util.impl.AuthenticationEntryPointImpl,com.dftdlaSecurityJwt.config.SecurityConfig
+
+

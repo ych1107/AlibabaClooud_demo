@@ -1,0 +1,36 @@
+server:
+  port: 9090
+spring:
+  config:
+    import:
+      - optional:nacos:common.yaml
+  application:
+    name: @artifactId@
+  cloud:
+    nacos:
+      discovery:
+        #Nacos服务注册中心(集群)地址
+        server-addr: localhost:8848
+#      config:
+        #关闭spring.config.import: - optional:nacos:xxx.yaml
+        group: DEFAULT_GROUP
+      config:
+        server-addr: localhost:8848
+#        import-check:
+#          enabled: false
+    # sentinel
+    sentinel:
+#      transport:
+#        dashboard: localhost:8080
+      # sentinel持久化
+      datasource:
+        flow:
+          nacos:
+            server-addr: localhost:8848 # nacos地址
+            dataId: test-flow-rules
+            groupId: SENTINEL_GROUP
+            rule-type: flow # 还可以是：degrade、authority、param-flow
+#log存放地址
+logging:
+  file:
+    name: logs/example/example.log

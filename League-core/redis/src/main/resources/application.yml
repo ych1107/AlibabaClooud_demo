@@ -1,0 +1,21 @@
+spring:
+  #    彩色打印日志
+  output:
+    ansi:
+      enabled: always
+  redis:
+    host: 192.168.238.135
+    port: 6379
+    #    数据库索引 默认为 0
+    database: 0
+    connect-timeout: -1
+    lettuce:
+      pool:
+        #    最大连接数 -1 表示没有限制
+        max-active: 20
+        #	 连接等待时间 -1表示无限等待
+        max-wait: -1
+        #    最大（小）空闲连接
+        max-idle: 5
+        min-idle: 0
+    password: "020411"

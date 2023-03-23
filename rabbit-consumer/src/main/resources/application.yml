@@ -1,0 +1,7 @@
+spring:
+  rabbitmq:
+    host: 192.168.238.135 # 主机名
+    port: 5672 # 端口
+    virtual-host: / # 虚拟主机
+    username: dftdla # 用户名
+    password: "020411" # 密码
