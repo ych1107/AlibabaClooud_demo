@@ -17,18 +17,25 @@ public class ResponseResult<T> {
      */
     private String msg;
     /**
-     * 查询到的结果数据，
+     * 查询到的结果数据
      */
     private T data;
+    /**
+     * 当前时间戳
+     */
+    private Long time;
 
     public ResponseResult(Integer code, String msg) {
         this.code = code;
         this.msg = msg;
+        this.time = System.currentTimeMillis();
+
     }
 
     public ResponseResult(Integer code, T data) {
         this.code = code;
         this.data = data;
+        this.time = System.currentTimeMillis();
     }
 
     public Integer getCode() {
@@ -59,5 +66,6 @@ public class ResponseResult<T> {
         this.code = code;
         this.msg = msg;
         this.data = data;
+        this.time = System.currentTimeMillis();
     }
 }

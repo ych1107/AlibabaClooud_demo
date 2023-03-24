@@ -47,12 +47,15 @@ public class UserDetailsServiceImpl implements MetaUserDetailsService {
             throw new RuntimeException("用户名或密码错误");
         }
         log.info(user.toString());
-        //TODO 根据用户查询权限信息 添加到LoginUser中
+        //根据用户查询权限信息 添加到LoginUser中
         List<String> authenticationNames = userAuthenticationService.getAuthenticationNames(user.getId());
 
 
-        if(authenticationNames.size() != 0) log.info(String.valueOf(authenticationNames));
-        else log.error("无任何权限");
+        if(authenticationNames.size() != 0) {
+            log.info(String.valueOf(authenticationNames));
+        } else {
+            log.error("无任何权限");
+        }
         //封装成UserDetails对象返回
         return new LoginUser(user,authenticationNames);
     }

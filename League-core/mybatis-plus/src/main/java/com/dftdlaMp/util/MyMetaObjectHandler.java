@@ -23,6 +23,8 @@ class MyMetaObjectHandler implements MetaObjectHandler {
         metaObject.setValue("createBy",BaseContext.getId());
         metaObject.setValue("updateBy",BaseContext.getId());
 
+        log.info("当前用户Id:{}",BaseContext.getId());
+
     }
 
     @Override
@@ -36,5 +38,6 @@ class MyMetaObjectHandler implements MetaObjectHandler {
         metaObject.setValue("updateTime",LocalDateTime.now());
         metaObject.setValue("updateBy",BaseContext.getId());
 
+        log.info("当前用户Id:{}",BaseContext.getId());
     }
 }

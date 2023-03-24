@@ -11,6 +11,7 @@
 
     <artifactId>mybatis-plus</artifactId>
     <description>mybatis-plus</description>
+    <name>mybatis-plus</name>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>

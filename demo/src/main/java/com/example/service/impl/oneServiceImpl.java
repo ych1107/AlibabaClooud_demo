@@ -14,6 +14,7 @@ public class oneServiceImpl extends ServiceImpl<oneMapper, one> implements oneSe
     @Autowired
     public oneMapper map;
 
+    @Override
     public void downSum(Long id) {
         one one = map.selectById(id);
         one.setSum(one.getSum()-1);

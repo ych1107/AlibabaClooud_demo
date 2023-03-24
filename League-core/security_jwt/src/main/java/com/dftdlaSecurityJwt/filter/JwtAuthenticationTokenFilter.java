@@ -2,6 +2,7 @@ package com.dftdlaSecurityJwt.filter;
 
 import com.dftdlaRedis.cache.RedisCache;
 import com.dftdlaSecurityJwt.pojo.LoginUser;
+import com.dftdlaSecurityJwt.util.BaseContext;
 import com.dftdlaSecurityJwt.util.JwtKey;
 import com.dftdlaSecurityJwt.util.JwtUtil;
 import io.jsonwebtoken.Claims;
@@ -53,13 +54,16 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
         String redisKey = JwtKey.LOGIN_KEY(userid);
         LoginUser loginUser = JsonToEvery(redisCache.getCacheObject(redisKey),LoginUser.class);
 
+
         if(Objects.isNull(loginUser)){
             throw new RuntimeException("用户未登录");
         }
 
+        BaseContext.setId(loginUser.getUser().getId());
+
         redisCache.expire(redisCache.getCacheObject(redisKey),JwtUtil.JWT_TTL, TimeUnit.MILLISECONDS);
         //存入SecurityContextHolder 三参数方式会设置 已认证参数
-        //TODO 获取权限信息封装到Authentication中
+        //获取权限信息封装到Authentication中
 //        throw new RuntimeException("运行到获取权限信息！");
 
         UsernamePasswordAuthenticationToken authenticationToken =
