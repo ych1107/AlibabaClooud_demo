@@ -30,7 +30,9 @@
 
 ​	项目配置主要依赖Nacos，请将other/nacosConfigs目录下的配置文件导入到Nacos
 
-​	sql
+​	sql导入：
+
+
 
 ```xml
 <parent>
