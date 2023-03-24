@@ -18,12 +18,21 @@ public class UserController {
     @Autowired
     private LoginService loginService;
 
+    /**
+     * 登录服务
+     * @param user
+     * @return
+     */
     @GetMapping("/login")
     public ResponseResult login(@RequestBody User user) {
         log.info(user.toString());
         return loginService.login(user);
     }
 
+    /**
+     * 登出服务
+     * @return
+     */
     @GetMapping("/logout")
     public ResponseResult logout(){
         return loginService.logout();

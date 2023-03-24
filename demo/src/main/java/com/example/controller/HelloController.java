@@ -32,12 +32,21 @@ public class HelloController {
     @Autowired
     private testService testServ;
 
+    /**
+     * seata分布式测试
+     * SpringSecurity+jwt权限测试
+     * @param id
+     */
     @GetMapping("/seata/{id}")
     @PreAuthorize("hasAuthority('seata')")
     public void seata(@PathVariable("id") Long id){
         testServ.testSeata(id);
     }
 
+
+    /**
+     * SpringSecurity+jwt权限测试
+     */
     @GetMapping
     @PreAuthorize("hasAuthority('hello')")
     public String hello() {

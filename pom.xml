@@ -20,6 +20,10 @@
         <module>League-core</module>
         <module>example</module>
         <module>common</module>
+        <module>demo</module>
+        <module>gateway</module>
+        <module>rabbit-consumer</module>
+        <module>rabbit-publisher</module>
     </modules>
 
     <dependencyManagement>

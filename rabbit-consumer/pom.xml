@@ -10,6 +10,8 @@
 
     <artifactId>rabbit-consumer</artifactId>
     <description>rabbit-consumer</description>
+    <groupId>com.dftdla</groupId>
+    <version>0.0.1-SNAPSHOT</version>
 
     <properties>
         <java.version>8</java.version>
@@ -33,14 +35,18 @@
         </dependency>
 
         <dependency>
-            <groupId>org.springframework.amqp</groupId>
-            <artifactId>spring-amqp</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
+            <version>2.6.4</version>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
         </dependency>
     </dependencies>
 

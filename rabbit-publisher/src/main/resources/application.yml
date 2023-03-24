@@ -5,3 +5,5 @@ spring:
     virtual-host: / # 虚拟主机
     username: dftdla # 用户名
     password: "020411" # 密码
+server:
+  port: 9092

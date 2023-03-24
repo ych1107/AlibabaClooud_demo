@@ -24,6 +24,11 @@ public class HelloController {
     @Autowired
     private HelloClient helloClient;
 
+    /**
+     * 获取Truth头，查询是否经过gateway
+     * @param truth
+     * @return
+     */
     @GetMapping("/truth")
     private String hello(@RequestHeader("Truth") String truth) {
         System.out.println(truth);

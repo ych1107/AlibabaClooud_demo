@@ -11,6 +11,9 @@
     <artifactId>gateway</artifactId>
     <name>gateway</name>
     <description>gateway</description>
+    <groupId>com.dftdla</groupId>
+    <version>0.0.1-SNAPSHOT</version>
+
     <properties>
         <java.version>8</java.version>
     </properties>

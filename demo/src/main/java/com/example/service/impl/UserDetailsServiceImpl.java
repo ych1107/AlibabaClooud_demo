@@ -29,6 +29,12 @@ public class UserDetailsServiceImpl implements MetaUserDetailsService {
     @Autowired
     private UserAuthenticeMapper userAuthenticationService;
 
+    /**
+     * 通过用户名认证登录
+     * @param username
+     * @return
+     * @throws UsernameNotFoundException
+     */
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         //根据用户名查询用户信息

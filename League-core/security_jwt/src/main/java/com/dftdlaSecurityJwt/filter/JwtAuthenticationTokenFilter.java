@@ -1,6 +1,5 @@
 package com.dftdlaSecurityJwt.filter;
 
-import com.alibaba.fastjson.JSON;
 import com.dftdlaRedis.cache.RedisCache;
 import com.dftdlaSecurityJwt.pojo.LoginUser;
 import com.dftdlaSecurityJwt.util.JwtKey;
@@ -19,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 import static com.dftdla.util.JsonConverter.JsonToEvery;
 
@@ -57,6 +57,7 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
             throw new RuntimeException("用户未登录");
         }
 
+        redisCache.expire(redisCache.getCacheObject(redisKey),JwtUtil.JWT_TTL, TimeUnit.MILLISECONDS);
         //存入SecurityContextHolder 三参数方式会设置 已认证参数
         //TODO 获取权限信息封装到Authentication中
 //        throw new RuntimeException("运行到获取权限信息！");

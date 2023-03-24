@@ -1,4 +1,4 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.dftdlaMp.config.MybatisPlusConfig
+  com.dftdlaMp.config.MybatisPlusConfig,com.dftdlaMp.util.MyMetaObjectHandler
 
 
