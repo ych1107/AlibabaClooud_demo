@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 
 /**
  * JSON转换器 当FastJson报错使用
+ * @author 14501
  */
 public class JsonConverter {
 
