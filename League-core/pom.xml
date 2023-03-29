@@ -19,6 +19,7 @@
         <module>elasticSearch</module>
         <module>security_jwt</module>
         <module>load-balancer</module>
+        <module>minio</module>
     </modules>
     <modelVersion>4.0.0</modelVersion>
 

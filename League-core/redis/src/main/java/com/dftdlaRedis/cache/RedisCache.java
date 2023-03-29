@@ -62,7 +62,10 @@ public class RedisCache {
      * @return true=设置成功；false=设置失败
      */
     public boolean expire(final String key, final long timeout, final TimeUnit unit) {
-        return redisTemplate.expire(key, timeout, unit);
+        if(6*redisTemplate.opsForValue().getOperations().getExpire(key)<timeout){
+            return Boolean.TRUE.equals(redisTemplate.expire(key, timeout, unit));
+        }
+        return false;
     }
 
     /**

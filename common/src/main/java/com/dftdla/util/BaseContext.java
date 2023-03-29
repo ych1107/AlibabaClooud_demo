@@ -1,4 +1,4 @@
-package com.dftdlaMp.util;
+package com.dftdla.util;
 
 /**
  * @author 14501
@@ -12,7 +12,7 @@ public class BaseContext {
     }
 
     public static Long getId() {
-        return id.get();
+        return BaseContext.id.get();
     }
 
 }
