@@ -13,7 +13,8 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>gateway_springsecurity_jwt</module>
+        <module>gateway-community</module>
+        <module>application-community</module>
     </modules>
 
     <properties>
@@ -25,9 +26,9 @@
     <dependencies>
 
         <dependency>
-            <groupId>com.hncj</groupId>
-            <artifactId>sentinel</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
         </dependency>
 
         <dependency>
@@ -37,41 +38,10 @@
         </dependency>
 
         <dependency>
-            <groupId>com.hncj</groupId>
-            <artifactId>load-balancer</artifactId>
+            <groupId>com.dftdlaMinio</groupId>
+            <artifactId>minio</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-
-        <dependency>
-            <groupId>com.dftdla</groupId>
-            <artifactId>gateway</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.hncj</groupId>
-            <artifactId>seata</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.hncj</groupId>
-            <artifactId>security_jwt</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.hncj</groupId>
-            <artifactId>common</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-
     </dependencies>
 
     <build>

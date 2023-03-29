@@ -1,0 +1,26 @@
+server:
+  port: 10010
+local: localhost:8848
+origin: 47.120.13.165:8848
+spring:
+  application:
+    name: @artifactId@
+#  cloud:
+#    nacos:
+#      discovery:
+#        server-addr: ${origin}
+#      config:
+#        server-addr: ${origin}
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${origin}
+      config:
+        server-addr: ${origin}
+  config:
+    import:
+      - optional:nacos:common.yaml
+      - optional:nacos:gateway.yaml
+logging:
+  file:
+    name: logs/gateway/gateway.log

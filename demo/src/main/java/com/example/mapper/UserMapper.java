@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 /** security
  *  sys_user表查询
+ * @author 14501
  */
 @Mapper
 public interface UserMapper extends BaseMapper<User> {

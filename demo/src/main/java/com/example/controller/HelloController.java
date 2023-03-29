@@ -4,7 +4,7 @@ import com.dftdlaRedis.cache.RedisCache;
 import com.example.service.impl.testService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.security.access.prepost.PreAuthorize;
+//import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,7 +38,7 @@ public class HelloController {
      * @param id
      */
     @GetMapping("/seata/{id}")
-    @PreAuthorize("hasAuthority('seata')")
+//    @PreAuthorize("hasAuthority('seata')")
     public void seata(@PathVariable("id") Long id){
         testServ.testSeata(id);
     }
@@ -48,7 +48,7 @@ public class HelloController {
      * SpringSecurity+jwt权限测试
      */
     @GetMapping
-    @PreAuthorize("hasAuthority('hello')")
+//    @PreAuthorize("hasAuthority('hello')")
     public String hello() {
 
 //        redisCache.setCacheObject(HELLO_WORLD,((String)redisCache.getCacheObject(HELLO_WORLD)).concat("-"));
