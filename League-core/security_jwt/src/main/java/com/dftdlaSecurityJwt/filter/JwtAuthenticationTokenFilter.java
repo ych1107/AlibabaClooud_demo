@@ -42,6 +42,7 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
         String token = request.getHeader("token");
         if (!StringUtils.hasText(token)) {
             //放行
+            log.warn("未携带Token");
             filterChain.doFilter(request, response);
             return;
         }
@@ -63,7 +64,6 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
             throw new RuntimeException("用户未登录");
         }
         //保存当前用户id到线程内存
-        log.info("保存info");
         BaseContext.setId(loginUser.getUser().getId());
 
         redisCache.expire(redisKey,USER_LOGIN,TimeUnit.SECONDS);

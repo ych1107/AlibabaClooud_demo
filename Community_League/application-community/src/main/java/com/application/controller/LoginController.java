@@ -4,7 +4,11 @@ import com.application.securityService.LoginService;
 import com.dftdla.pojo.User;
 import com.dftdla.result.ResponseResult;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Set;
 
 /**
  * @author 14501
@@ -15,6 +19,8 @@ public class LoginController {
 
     @Autowired
     private LoginService loginService;
+    @Autowired
+    private RedisTemplate redisTemplate;
 
     /**
      * 登录
@@ -42,6 +48,16 @@ public class LoginController {
     @GetMapping("/hello")
     public String hello(){
         return "hello";
+    }
+
+    /**
+     * 获取目前在线的人数
+     * @return
+     */
+    @GetMapping("/countPerson")
+    public ResponseResult countUser() {
+        Set loginUser = redisTemplate.keys("login:*");
+        return new ResponseResult(HttpStatus.OK.value(),loginUser==null?0:loginUser.size());
     }
 
 }

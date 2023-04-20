@@ -41,8 +41,9 @@ public class LoginServiceImpl implements LoginService {
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(user.getUserName(),user.getPassword());
         //调用实现UserDetailsService接口的实现类的loadUserByUserName方法
         Authentication authenticate = authenticationManager.authenticate(authenticationToken);
+        log.info("离开UserDetailsService:"+authenticate);
         if(Objects.isNull(authenticate)){
-            throw new RuntimeException("用户名或密码错误");
+            throw new RuntimeException("用户名或密码错误!");
         }
         log.info("验证通过,开始生成token");
         //使用userid生成token

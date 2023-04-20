@@ -8,7 +8,6 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -25,24 +24,6 @@ import javax.annotation.Resource;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-    /**
-     * 其他Bean的注册
-     */
-//    @Bean
-//    public JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter(){
-//        return new JwtAuthenticationTokenFilter();
-//    }
-//
-//    @Bean
-//    public AuthenticationEntryPoint authenticationEntryPoint(){
-//        return new AuthenticationEntryPointImpl();
-//    }
-//
-//    @Bean
-//    public AccessDeniedHandler accessDeniedHandler(){
-//        return new AccessDeniedHandlerImpl();
-//    }
-
 
     /**
      * 开始引用Bean
@@ -55,6 +36,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Resource
     private AccessDeniedHandler accessDeniedHandler;
+
+//    @Resource
+//    private Auth2AutoConfigurer auth2AutoConfigurer;
+//
+//    @Resource
+//    private Auth2Properties auth2Properties;
 
     /**
      *
@@ -74,6 +61,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+
         http
                 //关闭csrf
                 .csrf().disable()
@@ -81,12 +69,27 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                // 对于登录接口 允许匿名访问
+                // 对于注册接口 允许匿名访问
                 .antMatchers("/user/login").permitAll()
                 .antMatchers("/user/hello").permitAll()
+                .antMatchers("/oauth/**").permitAll()
                 .antMatchers("/user/register").anonymous()
                 // 除上面外的所有请求全部需要鉴权认证
                 .anyRequest().authenticated();
+
+        // ========= start: 使用 justAuth-spring-security-starter 必须步骤 =========
+        // 添加 Auth2AutoConfigurer 使 OAuth2(justAuth) login 生效.
+//        http.apply(this.auth2AutoConfigurer);
+
+        // 放行第三方登录入口地址与第三方登录回调地址
+        // @formatter:off
+//        http.authorizeRequests()
+//                .antMatchers(HttpMethod.GET,
+//                        auth2Properties.getRedirectUrlPrefix() + "/*",
+//                        auth2Properties.getAuthLoginUrlPrefix() + "/*")
+//                .permitAll();
+        // @formatter:on
+        // ========= end: 使用 justAuth-spring-security-starter 必须步骤 =========
 
         http.addFilterBefore(jwtAuthenticationTokenFilter, UsernamePasswordAuthenticationFilter.class);
 

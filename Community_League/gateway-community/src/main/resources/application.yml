@@ -13,10 +13,11 @@ spring:
 #        server-addr: ${origin}
   cloud:
     nacos:
-      discovery:
-        server-addr: ${origin}
-      config:
-        server-addr: ${origin}
+#      discovery:
+#        server-addr: ${origin}
+#      config:
+#        server-addr: ${origin}
+      server-addr: ${origin}
   config:
     import:
       - optional:nacos:common.yaml

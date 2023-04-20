@@ -18,6 +18,19 @@
     </properties>
 
     <dependencies>
+
+<!--        <dependency>-->
+<!--            <groupId>top.dcenter</groupId>-->
+<!--            <artifactId>justAuth-spring-security-starter</artifactId>-->
+<!--            <version>1.1.25</version>-->
+<!--        </dependency>-->
+
+        <dependency>
+            <groupId>com.xkcoding</groupId>
+            <artifactId>justauth-spring-boot-starter</artifactId>
+            <version>1.1.0</version>
+        </dependency>
+
         <dependency>
             <groupId>com.hncj</groupId>
             <artifactId>common</artifactId>

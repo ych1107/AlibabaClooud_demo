@@ -72,7 +72,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     @Override
     public ResponseResult userUpdate(User user, MultipartFile file) {
-    //修改不了自己 的信息
+
+        user.setUserName(null);
 
         if(!user.getId().equals(BaseContext.getId())){
             log.info(user+":"+BaseContext.getId());

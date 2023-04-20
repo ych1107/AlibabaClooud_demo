@@ -19,6 +19,7 @@ import java.util.Objects;
 /** security
  *  UserDetailServiceImpl 示例
  *  校验用户token
+ * @author 14501
  */
 @Service
 @Slf4j
@@ -43,10 +44,12 @@ public class UserDetailsServiceImpl implements MetaUserDetailsService {
         wrapper.eq(User::getUserName,username);
         User user = userMapper.selectOne(wrapper);
 
+        log.info("LoadUser:{}",user);
+
         //如果查询不到数据就通过抛出异常来给出提示
         if(Objects.isNull(user)){
             log.info("没查到你啊,小伙子你怎么回事？");
-            throw new RuntimeException("用户名或密码错误");
+            throw new RuntimeException("用户名错误!");
         }
 
         BaseContext.setId(user.getId());
@@ -56,7 +59,7 @@ public class UserDetailsServiceImpl implements MetaUserDetailsService {
         if(authenticationNames.size() != 0) {
             log.info(String.valueOf(authenticationNames));
         } else {
-            log.error("无任何权限");
+            log.warn("无任何权限!");
         }
         //封装成UserDetails对象返回
         return new LoginUser(user,authenticationNames);

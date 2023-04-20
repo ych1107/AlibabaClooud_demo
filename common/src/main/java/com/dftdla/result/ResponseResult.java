@@ -23,7 +23,7 @@ public class ResponseResult<T> {
     /**
      * 当前时间戳
      */
-    private final Long time;
+    private Long time;
 
     public ResponseResult(Integer code, String msg) {
         this.time = System.currentTimeMillis();
@@ -35,6 +35,14 @@ public class ResponseResult<T> {
         this.time = System.currentTimeMillis();
         this.code = code;
         this.data = data;
+    }
+
+    public Long getTime() {
+        return time;
+    }
+
+    public void setTime(Long time) {
+        this.time = time;
     }
 
     public Integer getCode() {
