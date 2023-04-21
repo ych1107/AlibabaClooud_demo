@@ -3,6 +3,7 @@ package com.application.controller;
 import com.application.service.UserService;
 import com.dftdla.pojo.User;
 import com.dftdla.result.ResponseResult;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -11,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
  * 用户操作
  * @author 14501
  */
+@Api(tags = "用户操作接口")
 @RestController
 @RequestMapping("/user")
 public class UserController {

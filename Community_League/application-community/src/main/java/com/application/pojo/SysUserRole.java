@@ -2,23 +2,29 @@ package com.application.pojo;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import java.io.Serializable;
 
 /**
  *
+ * @author 14501
  * @TableName sys_user_role
  */
+@ApiModel(value = "用户角色表",description = "存储用户对应的角色信息")
 @TableName(value ="sys_user_role")
 public class SysUserRole implements Serializable {
     /**
      * 用户id
      */
+    @ApiModelProperty("用户id")
     private Long userId;
 
     /**
      * 角色id
      */
+    @ApiModelProperty("角色id")
     private Long roleId;
 
     @TableField(exist = false)

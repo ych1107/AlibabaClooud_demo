@@ -2,23 +2,29 @@ package com.application.pojo;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import java.io.Serializable;
 
 /**
  *
+ * @author 14501
  * @TableName sys_role_menu
  */
+@ApiModel(value = "角色菜单表",description = "存储角色对应的菜单信息")
 @TableName(value ="sys_role_menu")
 public class SysRoleMenu implements Serializable {
     /**
      * 角色ID
      */
+    @ApiModelProperty("角色ID")
     private Long roleId;
 
     /**
      * 菜单id
      */
+    @ApiModelProperty("菜单id")
     private Long menuId;
 
     @TableField(exist = false)

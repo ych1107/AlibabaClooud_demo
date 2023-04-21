@@ -1,67 +1,86 @@
 package com.application.pojo;
 
+import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * 角色表
+ * @author 14501
  * @TableName sys_role
  */
+@ApiModel(value = "角色表",description = "存储角色对应的信息")
 @TableName(value ="sys_role")
 public class SysRole implements Serializable {
     /**
      *
      */
+    @ApiModelProperty("角色id")
     @TableId
     private Long id;
 
     /**
-     *
+     *  角色名称
      */
+    @ApiModelProperty("角色名称")
     private String name;
 
     /**
      * 角色权限字符串
      */
+    @ApiModelProperty("角色权限字符串")
     private String roleKey;
 
     /**
      * 角色状态（0正常 1停用）
      */
+    @ApiModelProperty("角色状态（0正常 1停用）")
     private String status;
 
     /**
-     * del_flag
+     * 是否删除（0未删除 1已删除）
      */
+    @ApiModelProperty("是否删除（0未删除 1已删除）")
     private Integer delFlag;
 
     /**
-     *
+     * 创建人的用户id
      */
+    @ApiModelProperty("创建人的用户id")
+    @TableField(fill = FieldFill.INSERT)
     private Long createBy;
 
     /**
-     *
+     * 创建时间
      */
-    private Date createTime;
+    @ApiModelProperty("创建时间")
+    @TableField(fill = FieldFill.INSERT)
+    private LocalDateTime createTime;
 
     /**
-     *
+     * 更新人的用户id
      */
+    @ApiModelProperty("更新人的用户id")
+    @TableField(fill = FieldFill.INSERT_UPDATE)
     private Long updateBy;
 
     /**
-     *
+     * 更新时间
      */
-    private Date updateTime;
+    @ApiModelProperty("更新时间")
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    private LocalDateTime updateTime;
 
     /**
      * 备注
      */
+    @ApiModelProperty("备注")
     private String remark;
 
     @TableField(exist = false)
@@ -154,14 +173,14 @@ public class SysRole implements Serializable {
     /**
      *
      */
-    public Date getCreateTime() {
+    public LocalDateTime getCreateTime() {
         return createTime;
     }
 
     /**
      *
      */
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(LocalDateTime createTime) {
         this.createTime = createTime;
     }
 
@@ -182,14 +201,14 @@ public class SysRole implements Serializable {
     /**
      *
      */
-    public Date getUpdateTime() {
+    public LocalDateTime getUpdateTime() {
         return updateTime;
     }
 
     /**
      *
      */
-    public void setUpdateTime(Date updateTime) {
+    public void setUpdateTime(LocalDateTime updateTime) {
         this.updateTime = updateTime;
     }
 

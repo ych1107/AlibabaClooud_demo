@@ -18,6 +18,10 @@ spring:
 #      config:
 #        server-addr: ${origin}
       server-addr: ${origin}
+      discovery:
+        namespace: 8aa39e26-f01c-487f-b0ea-0ffd8a3757ab
+      config:
+        namespace: 8aa39e26-f01c-487f-b0ea-0ffd8a3757ab
   config:
     import:
       - optional:nacos:common.yaml

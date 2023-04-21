@@ -1,87 +1,110 @@
 package com.application.pojo;
 
+import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * 菜单表
  * @TableName sys_menu
+ * @Author 14501
  */
+@ApiModel(value = "菜单表",description = "存储对应的权限信息")
 @TableName(value ="sys_menu")
 public class SysMenu implements Serializable {
     /**
      *
      */
+    @ApiModelProperty("菜单id")
     @TableId
     private Long id;
 
     /**
      * 菜单名
      */
+    @ApiModelProperty("菜单名")
     private String menuName;
 
     /**
      * 路由地址
      */
+    @ApiModelProperty("路由地址")
     private String path;
 
     /**
      * 组件路径
      */
+    @ApiModelProperty("组件路径")
     private String component;
 
     /**
      * 菜单状态（0显示 1隐藏）
      */
+    @ApiModelProperty("菜单状态（0显示 1隐藏）")
     private String visible;
 
     /**
      * 菜单状态（0正常 1停用）
      */
+    @ApiModelProperty("菜单状态（0正常 1停用）")
     private String status;
 
     /**
      * 权限标识
      */
+    @ApiModelProperty("权限标识")
     private String perms;
 
     /**
      * 菜单图标
      */
+    @ApiModelProperty("菜单图标")
     private String icon;
 
     /**
-     *
+     * 创建人的用户id
      */
+    @ApiModelProperty("创建人的用户id")
+    @TableField(fill = FieldFill.INSERT)
     private Long createBy;
 
     /**
-     *
+     * 创建时间
      */
-    private Date createTime;
+    @ApiModelProperty("创建时间")
+    @TableField(fill = FieldFill.INSERT)
+    private LocalDateTime createTime;
 
     /**
-     *
+     * 更新人的用户id
      */
+    @ApiModelProperty("更新人的用户id")
+    @TableField(fill = FieldFill.INSERT_UPDATE)
     private Long updateBy;
 
     /**
-     *
+     * 更新时间
      */
-    private Date updateTime;
+    @ApiModelProperty("更新时间")
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    private LocalDateTime updateTime;
 
     /**
      * 是否删除（0未删除 1已删除）
      */
+    @ApiModelProperty("是否删除（0未删除 1已删除）")
     private Integer delFlag;
 
     /**
      * 备注
      */
+    @ApiModelProperty("备注")
     private String remark;
 
     @TableField(exist = false)
@@ -216,14 +239,14 @@ public class SysMenu implements Serializable {
     /**
      *
      */
-    public Date getCreateTime() {
+    public LocalDateTime getCreateTime() {
         return createTime;
     }
 
     /**
      *
      */
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(LocalDateTime createTime) {
         this.createTime = createTime;
     }
 
@@ -244,14 +267,14 @@ public class SysMenu implements Serializable {
     /**
      *
      */
-    public Date getUpdateTime() {
+    public LocalDateTime getUpdateTime() {
         return updateTime;
     }
 
     /**
      *
      */
-    public void setUpdateTime(Date updateTime) {
+    public void setUpdateTime(LocalDateTime updateTime) {
         this.updateTime = updateTime;
     }
 

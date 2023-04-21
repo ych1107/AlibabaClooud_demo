@@ -15,8 +15,10 @@ spring:
     nacos:
       discovery:
         server-addr: ${origin}
+        namespace: 8aa39e26-f01c-487f-b0ea-0ffd8a3757ab
       config:
         server-addr: ${origin}
+        namespace: 8aa39e26-f01c-487f-b0ea-0ffd8a3757ab
   config:
     import:
       - optional:nacos:common.yaml

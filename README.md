@@ -4,7 +4,7 @@
 
 ​	部分配置采用了b站：黑马程序员、三更草堂
 
-
+​    项目启动后接口文档地址:(ip:port/swagger-ui/index.html)
 
 ​	使用方式可参考demo、example、gateway
 

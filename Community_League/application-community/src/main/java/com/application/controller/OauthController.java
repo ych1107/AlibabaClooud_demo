@@ -10,6 +10,7 @@ import com.dftdla.pojo.User;
 import com.dftdla.result.ResponseResult;
 import com.xkcoding.justauth.AuthRequestFactory;
 import io.seata.spring.annotation.GlobalTransactional;
+import io.swagger.annotations.*;
 import lombok.extern.slf4j.Slf4j;
 import me.zhyd.oauth.config.AuthSource;
 import me.zhyd.oauth.model.AuthCallback;
@@ -39,6 +40,7 @@ import java.util.stream.Collectors;
  * @description: 第三方登录 Controller
  */
 @Slf4j
+@Api(tags = "第三方登录接口")
 @RestController
 @RequestMapping("/oauth")
 public class OauthController {
@@ -58,6 +60,8 @@ public class OauthController {
     /**
      * 登录类型
      */
+    @ApiOperation(value = "获取第三方登录信息",notes = "返回本项目支持的第三方登录信息列表，包括 第三方名称和请求链接")
+    @ApiResponse(code = 200, message = "获取列表成功")
     @GetMapping
     public Map<String, String> loginType() {
         List<String> oauthList = factory.oauthList();
@@ -71,7 +75,12 @@ public class OauthController {
      * @param response  response
      * @throws IOException
      */
-    @RequestMapping("/login/{oauthType}")
+    @ApiOperation(value = "第三方登录接口",notes = "一个接口实现多种第三方登录，成功后重定向到授权页面，swagger测试时 状态码为：Undocumented")
+    @ApiImplicitParams({
+            @ApiImplicitParam(paramType = "path", name = "oauthType",value = "第三方类型", required = true)
+    })
+    @ApiResponse(code = 302, message = "进入授权页面")
+    @GetMapping("/login/{oauthType}")
     public void renderAuth(@PathVariable String oauthType, HttpServletResponse response) throws IOException {
         AuthRequest authRequest = factory.get(getAuthSource(oauthType));
         response.sendRedirect(authRequest.authorize(oauthType + "::" + AuthStateUtils.createState()));
@@ -84,8 +93,16 @@ public class OauthController {
      * @param callback  携带返回的信息
      * @return 登录成功后的信息
      */
+    @ApiOperation(value = "第三方登录接口回调",notes = "读取回调信息进行用户登录")
+    @ApiImplicitParams({
+            @ApiImplicitParam(paramType = "path", name = "oauthType", value = "第三方类型", required = true),
+            @ApiImplicitParam(paramType = "body", name = "callback", value = "第三方回调信息", required = true)
+    })
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "回调登录成功！")
+    })
     @GlobalTransactional
-    @RequestMapping("/callback/{oauthType}")
+    @GetMapping("/callback/{oauthType}")
     public ResponseResult login(@PathVariable String oauthType, AuthCallback callback) throws InterruptedException {
 
         String defaultPassword = "61056399d7307a22c632ed91e5b4";
